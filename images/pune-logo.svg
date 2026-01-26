@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Savitribai Phule Pune University Logo -->
+  <rect width="200" height="200" fill="#FFFFFF" stroke="#000" stroke-width="2"/>
+  <circle cx="100" cy="70" r="40" fill="none" stroke="#000" stroke-width="2"/>
+  <text x="100" y="145" text-anchor="middle" font-size="12" fill="#000" font-family="Arial" font-weight="bold">
+    <tspan x="100" dy="0">Pune</tspan>
+    <tspan x="100" dy="14">University</tspan>
+  </text>
+</svg>
