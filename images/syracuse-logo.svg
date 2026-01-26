@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <!-- Syracuse University School of Information Studies Logo -->
-  <rect width="200" height="200" fill="#003399"/>
-  <circle cx="100" cy="60" r="35" fill="#FF6600"/>
-  <text x="100" y="140" text-anchor="middle" font-size="14" fill="#FFFFFF" font-family="Arial">
-    <tspan x="100" dy="0">Syracuse</tspan>
-    <tspan x="100" dy="16">University</tspan>
-  </text>
-</svg>
