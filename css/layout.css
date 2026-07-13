@@ -601,6 +601,10 @@ ul#nav li.current a { color: #F06000; }
    margin-top: -15px;
 }
 .portfolio-item .item-wrap img {
+   display: block;
+   width: 100%;
+   aspect-ratio: 4 / 3;
+   object-fit: cover;
    vertical-align: bottom;
 }
 .portfolio-item .portfolio-item-meta { padding: 18px }
