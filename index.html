@@ -4,6 +4,17 @@
 <!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 
+   <!-- Apply saved theme before first paint to avoid a flash of the wrong theme -->
+   <script>
+      (function () {
+         try {
+            if (localStorage.getItem('theme') === 'light') {
+               document.documentElement.setAttribute('data-theme', 'light');
+            }
+         } catch (e) {}
+      })();
+   </script>
+
    <!--- Basic Page Needs
    ================================================== -->
    <meta charset="utf-8">
@@ -42,7 +53,6 @@
    <link rel="stylesheet" href="css/default.css">
 	<link rel="stylesheet" href="css/layout.css">
    <link rel="stylesheet" href="css/media-queries.css">
-   <link rel="stylesheet" href="css/magnific-popup.css">
 
    <!-- Script
    ================================================== -->
@@ -79,6 +89,8 @@
          </ul> <!-- end #nav -->
 
       </nav> <!-- end #nav-wrap -->
+
+      <button id="theme-toggle" aria-label="Toggle light/dark theme"><i class="fa fa-adjust"></i></button>
 
       <div class="row banner">
    <div class="banner-text">
@@ -468,6 +480,8 @@
 
             </div>
 
+         </div> <!-- main-col end -->
+
       </div> <!-- End skills -->
 
    </section> <!-- Resume Section End-->
@@ -483,19 +497,21 @@
 
             <h1>Technical Lab (Science-Focused)</h1>
 
-            <div style="text-align: center; padding: 60px 20px; background: linear-gradient(135deg, rgba(17, 171, 176, 0.05) 0%, rgba(17, 171, 176, 0.02) 100%); border-radius: 12px; margin-top: 30px;">
-               <div style="font-size: 3em; margin-bottom: 20px;">🔬</div>
-               <h2 style="color: #333; font-size: 1.8em; margin-bottom: 10px;">Work in Progress</h2>
-               <p style="color: #666; font-size: 1.1em; line-height: 1.6; max-width: 600px; margin: 0 auto;">
-                  I'm currently building innovative data science projects and ML experiments. New projects coming soon—stay tuned for deep dives into causal inference, agentic AI systems, and advanced forecasting models.
-               </p>
+            <!-- Filter bar -->
+            <div id="portfolio-filters" class="portfolio-filters">
+               <button type="button" class="filter-btn active" data-filter="all">All</button>
+               <button type="button" class="filter-btn" data-filter="causal-inference">Causal Inference</button>
+               <button type="button" class="filter-btn" data-filter="agentic-ai">Agentic AI</button>
+               <button type="button" class="filter-btn" data-filter="web-sports-analytics">Web / Sports Analytics</button>
             </div>
 
+            <p class="portfolio-wip-note">🔬 Work in progress — new projects are added here as they ship.</p>
+
             <!-- Portfolio grid -->
-            <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf" style="margin-top: 40px;">
+            <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf" style="margin-top: 30px;">
 
                <!-- Portfolio IQ -->
-               <div class="columns portfolio-item">
+               <div class="columns portfolio-item" data-tags="causal-inference agentic-ai">
                   <div class="item-wrap">
                      <a href="#modal-portfolio-iq" class="popup-modal">
                         <img src="images/portfolio/portfolio-iq.jpg" alt="Portfolio IQ">
@@ -509,15 +525,105 @@
                   </div>
                </div>
 
+               <!-- FIFA World Cup Predictions -->
+               <div class="columns portfolio-item" data-tags="web-sports-analytics">
+                  <div class="item-wrap">
+                     <a href="#modal-fifa-predictions" class="popup-modal">
+                        <img src="images/portfolio/fifa-predictions.jpg" alt="FIFA World Cup Predictions">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>FIFA World Cup Predictions</h5>
+                              <p>Organizational World Cup prediction pool with leagues, leaderboards & analytics</p>
+                           </div>
+                        </div>
+                     </a>
+                  </div>
+               </div>
+
+               <!-- A/B Testing & Causal Learning Lab (placeholder) -->
+               <div class="columns portfolio-item" data-tags="causal-inference">
+                  <div class="item-wrap">
+                     <span class="coming-soon-badge">Coming Soon</span>
+                     <a href="#modal-ab-testing-causal-lab" class="popup-modal">
+                        <img src="images/portfolio/ab-testing-causal-lab.jpg" alt="A/B Testing & Causal Learning Lab">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+                              <h5>A/B Testing & Causal Learning Lab</h5>
+                              <p>Experimental design, A/B testing methodology & causal inference — learning in public</p>
+                           </div>
+                        </div>
+                     </a>
+                  </div>
+               </div>
+
+               <!-- New .portfolio-item + modal pairs go here, following the Portfolio IQ pattern above -->
+
             </div>
 
+            <!-- Modal for Portfolio IQ -->
+            <dialog id="modal-portfolio-iq" class="popup-modal">
+               <img class="scale-with-grid" src="images/portfolio/modals/m-portfolio-iq.jpg" alt="Portfolio IQ" />
+               <div class="description-box">
+                  <h4>Portfolio IQ</h4>
+                  <p>Building intelligent systems at the intersection of causal inference, high-frequency trading, and multi-agent orchestration. This platform isolates true price impact signals from retail sentiment using causal discovery and autonomous agents.</p>
+
+                  <div class="categories">
+                     <span><i class="fa fa-check-circle"></i> Real-time ingestion (Finnhub, Alpha Vantage, Reddit)</span>
+                     <span><i class="fa fa-check-circle"></i> PC algorithm & Double ML causal engine</span>
+                     <span><i class="fa fa-check-circle"></i> LangGraph multi-agent orchestration</span>
+                  </div>
+
+                  <div class="link-box">
+                     <a href="https://github.com/ADITYATORNEKAR/portfolio-iq" target="_blank">Explore Repository</a>
+                     <a class="popup-modal-dismiss" href="#">Close</a>
+                  </div>
+               </div>
+            </dialog>
+
+            <!-- Modal for FIFA World Cup Predictions -->
+            <dialog id="modal-fifa-predictions" class="popup-modal">
+               <img class="scale-with-grid" src="images/portfolio/modals/m-fifa-predictions.jpg" alt="FIFA World Cup Predictions" />
+               <div class="description-box">
+                  <h4>FIFA World Cup Predictions</h4>
+                  <p>A World Cup 2026 prediction platform built for my organization — users submit match-by-match predictions and earn points, join internal leagues to compete with their teams, and track standings and trends on a live leaderboard and analytics page.</p>
+
+                  <div class="categories">
+                     <span><i class="fa fa-check-circle"></i> Match-by-match predictions with automated points scoring</span>
+                     <span><i class="fa fa-check-circle"></i> Internal leagues with live leaderboards</span>
+                     <span><i class="fa fa-check-circle"></i> Analytics dashboard tracking prediction performance</span>
+                  </div>
+
+                  <div class="link-box">
+                     <a href="https://github.com/ADITYATORNEKAR/wc2026-predictor" target="_blank">Explore Repository</a>
+                     <a href="https://wc2026-predictor-weld.vercel.app/" target="_blank">View Live Site</a>
+                     <a class="popup-modal-dismiss" href="#">Close</a>
+                  </div>
+               </div>
+            </dialog>
+
+            <!-- Modal for A/B Testing & Causal Learning Lab -->
+            <dialog id="modal-ab-testing-causal-lab" class="popup-modal">
+               <img class="scale-with-grid" src="images/portfolio/modals/m-ab-testing-causal-lab.jpg" alt="A/B Testing & Causal Learning Lab" />
+               <div class="description-box">
+                  <h4>A/B Testing & Causal Learning Lab</h4>
+                  <p>A learning-in-public project covering experimental design, A/B testing methodology, and causal inference techniques (uplift modeling, double ML, causal discovery) — written up as tutorials and worked examples.</p>
+
+                  <div class="categories">
+                     <span><i class="fa fa-check-circle"></i> Experimental design & A/B testing fundamentals</span>
+                     <span><i class="fa fa-check-circle"></i> Uplift modeling & double ML tutorials</span>
+                     <span><i class="fa fa-check-circle"></i> Causal discovery worked examples</span>
+                  </div>
+
+                  <div class="link-box">
+                     <span class="link-disabled">Coming Soon</span>
+                     <a class="popup-modal-dismiss" href="#">Close</a>
+                  </div>
+               </div>
+            </dialog>
+
+            <!-- New modals go here, following the Portfolio IQ dialog pattern above -->
+
          </div> <!-- twelve columns end -->
-
-      </div> <!-- row End -->
-
-
-
-
 
       </div> <!-- row End -->
 
@@ -573,7 +679,7 @@
 
             <div class="ten columns flex-container">
 
-               <div class="flexslider">
+               <div class="flexslider" tabindex="0">
 
                   <ul class="slides">
 
@@ -633,30 +739,19 @@
 
                </div> <!-- div.flexslider ends -->
 
+               <div class="flex-nav">
+                  <button class="flex-prev" type="button" aria-label="Previous testimonial"><i class="fa fa-angle-left"></i></button>
+                  <button class="flex-next" type="button" aria-label="Next testimonial"><i class="fa fa-angle-right"></i></button>
+               </div>
+
             </div> <!-- div.flex-container ends -->
 
          </div> <!-- row ends -->
-         </div> <!-- row End -->
 
-         <!-- Modal for Portfolio IQ -->
-         <div id="modal-portfolio-iq" class="popup-modal mfp-hide">
-            <img class="scale-with-grid" src="images/portfolio/modals/m-portfolio-iq.jpg" alt="Portfolio IQ" />
-            <div class="description-box">
-               <h4>Portfolio IQ</h4>
-               <p>Building intelligent systems at the intersection of causal inference, high-frequency trading, and multi-agent orchestration. This platform isolates true price impact signals from retail sentiment using causal discovery and autonomous agents.</p>
+      </div> <!-- text-container ends -->
 
-               <div class="categories">
-                  <span><i class="fa fa-check-circle"></i> Real-time ingestion (Finnhub, Alpha Vantage, Reddit)</span>
-                  <span><i class="fa fa-check-circle"></i> PC algorithm & Double ML causal engine</span>
-                  <span><i class="fa fa-check-circle"></i> LangGraph multi-agent orchestration</span>
-               </div>
+   </section> <!-- Testimonials Section End-->
 
-               <div class="link-box">
-                  <a href="https://github.com/ADITYATORNEKAR/portfolio-iq" target="_blank">Explore Repository</a>
-                  <a class="popup-modal-dismiss" href="#">Close</a>
-               </div>
-            </div>
-         </div>
 
    <!-- Writings Section
    ================================================== -->
@@ -834,11 +929,14 @@
    <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
 
-   <script src="js/jquery.flexslider.js"></script>
    <script src="js/waypoints.js"></script>
    <script src="js/jquery.fittext.js"></script>
-   <script src="js/magnific-popup.js"></script>
    <script src="js/init.js"></script>
+   <script src="js/theme-toggle.js"></script>
+   <script src="js/scroll-interactions.js"></script>
+   <script src="js/modals.js"></script>
+   <script src="js/testimonial-carousel.js"></script>
+   <script src="js/portfolio-filter.js"></script>
 
 </body>
 

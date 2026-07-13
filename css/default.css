@@ -30,6 +30,36 @@ e. Others
 @import url("fontello/css/fontello.css");
 @import url("font-awesome/css/font-awesome.min.css");
 
+/* ------------------------------------------------------------------ */
+/* Custom Properties (theme tokens)
+/* ------------------------------------------------------------------ */
+
+:root {
+   --color-accent: #11ABB0;
+
+   --color-bg-primary: #0f0f0f;
+   --color-bg-header: #161415;
+   --color-bg-section: #2B2B2B;
+   --color-bg-contact: #191919;
+
+   --color-text-body: #838C95;
+   --color-text-muted: #7A7A7A;
+   --color-text-subtle: #A1A1A1;
+   --color-text-on-contact: #EBEEEE;
+}
+
+[data-theme="light"] {
+   --color-text-on-contact: #23272a;
+   --color-bg-primary: #f7f7f5;
+   --color-bg-header: #eef0f1;
+   --color-bg-section: #ffffff;
+   --color-bg-contact: #eceeef;
+
+   --color-text-body: #4d5760;
+   --color-text-muted: #5c5c5c;
+   --color-text-subtle: #6e6e6e;
+}
+
 /* ------------------------------------------------------------------
 /* b. Reset
       Adapted from:
@@ -139,6 +169,11 @@ table {
 html {
    font-size: 62.5%;
    -webkit-font-smoothing: antialiased;
+   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+   html { scroll-behavior: auto; }
 }
 
 body {
@@ -147,7 +182,7 @@ body {
    font-weight: normal;
    font-size: 15px;
    line-height: 30px;
-	color: #838C95;
+	color: var(--color-text-body);
 
    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
 	-webkit-text-size-adjust: 100%;
@@ -161,10 +196,11 @@ h1, h2, h3, h4, h5, h6 {
    color: #313131;
 	font-family: 'opensans-bold', sans-serif;
    font-weight: normal;
+   letter-spacing: -0.3px;
 }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
 h1 { font-size: 38px; line-height: 42px; margin-bottom: 12px; letter-spacing: -1px; }
-h2 { font-size: 28px; line-height: 36px; margin-bottom: 6px; }
+h2 { font-size: 28px; line-height: 36px; margin-bottom: 6px; letter-spacing: -0.5px; }
 h3 { font-size: 22px; line-height: 30px; margin-bottom: 12px; }
 h4 { font-size: 20px; line-height: 30px; margin-bottom: 6px; }
 h5 { font-size: 18px; line-height: 30px; }
@@ -288,7 +324,7 @@ hr { border: solid #E3E3E3; border-width: 1px 0 0; clear: both; margin: 11px 0 3
 a, a:visited {
    text-decoration: none;
    outline: 0;
-   color: #11ABB0;
+   color: var(--color-accent);
 
    -webkit-transition: color .3s ease-in-out;
    -moz-transition: color .3s ease-in-out;
@@ -349,7 +385,7 @@ li p { }
    color: #313131;
 }
 .stats-tabs li a:hover {
-   color:#11ABB0;
+   color: var(--color-accent);
 }
 .stats-tabs li a b {
 	display: block;
@@ -361,7 +397,7 @@ li p { }
 
 /* definition list */
 dl { margin: 12px 0; }
-dt { margin: 0; color:#11ABB0; }
+dt { margin: 0; color: var(--color-accent); }
 dd { margin: 0 0 0 20px; }
 
 /* Lining Definition Style Markup */
@@ -436,7 +472,7 @@ dd { margin: 0 0 0 20px; }
 }
 .pagination .current,
 .pagination .current:hover {
-   background-color: #11ABB0;
+   background-color: var(--color-accent);
    color: #fff;
 }
 .pagination .inactive,
@@ -464,7 +500,7 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"] {
    font: 16px/30px 'opensans-bold', sans-serif;
-   background: #11ABB0;
+   background: var(--color-accent);
    display: inline-block;
 	text-decoration: none;
    letter-spacing: 0;

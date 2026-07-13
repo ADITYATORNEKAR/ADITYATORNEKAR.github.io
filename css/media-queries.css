@@ -97,6 +97,13 @@
 
 @media only screen and (max-width: 767px) {
 
+   /* theme toggle - move clear of the mobile nav hamburger button */
+   #theme-toggle {
+      top: 8px;
+      left: 12px;
+      right: auto;
+   }
+
    /* mobile navigation
    -------------------------------------------------------------------- */
    #nav-wrap {
@@ -255,7 +262,15 @@
    /* Portfolio Section
    /* ----------------------------------------------------------------- */
    #portfolio-wrapper .columns { margin-bottom: 40px; }
-   .popup-modal {	max-width: 85%; }
+   dialog.popup-modal { max-width: 85%; }
+   .portfolio-filters { gap: 8px; }
+   .filter-btn { padding: 6px 14px; font-size: 11px; }
+   .item-wrap .coming-soon-badge {
+      top: 10px;
+      right: -38px;
+      padding: 4px 34px;
+      font-size: 10px;
+   }
 
 
    /* Testimonials Section
@@ -272,13 +287,7 @@
    #testimonials blockquote { padding-bottom: 24px; }
    #testimonials blockquote p {
       font-size: 20px;
-      line-height: 42px;      
-   }
-
-   /* Control Nav */
-   .flex-control-nav {
-      text-align: center;
-      margin-left: -30px;
+      line-height: 42px;
    }
 
 
